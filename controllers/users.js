@@ -87,10 +87,10 @@ export const updateOrder = async (req, res) => {
     })
     // 第二步: 直接做陣列處理改資料
     const orderidx = result.orders.findIndex(order => {
-      return (order._id = req.params.id)
+      return order._id.toString() === req.params.id
     })
     const itemidx = result.orders[orderidx].items.findIndex(item => {
-      return (item.p_id = req.body.p_id)
+      return item.p_id.toString() === req.body.p_id
     })
     result.orders[orderidx].items[itemidx].amount = req.body.amount
     // 第三步: 存回去
